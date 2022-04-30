@@ -1,0 +1,151 @@
+body {
+  background-image: url("../images/bg2.jpeg");
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  color : rgb(255, 250, 240);
+}
+
+
+output {
+  display: inline-block;
+}
+
+/* Classes */
+
+.i {
+  width: 100px;
+  height: 40px;
+  background-color: RebeccaPurple;
+  color : rgb(255,250,240);
+}
+
+
+/* Divisons Start */
+
+  /* Slider Start*/
+.slide {
+  width: 45%;
+  padding: 0px 400px;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 250px;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #8A2BE2;
+  cursor: pointer;
+  /* padding: 0px 50px; */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #8A2BE2;
+  cursor: pointer;
+  /* padding: 0px 50px; */
+}
+
+/* Slider End */
+
+/* Tooltip Start */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted IndianRed;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Tooltip End */
+
+
+div.a {
+  align-self: center;
+  color : rgb(255, 250, 240);
+  width: 500px;
+  height: 50px;
+  padding: 0px 510px;
+  border-radius: 10px;
+  background: purple url('smiley.gif') ;
+  animation: mymove 5s infinite;
+  }
+
+  @keyframes mymove {
+  50% {background: MidnightBlue center center/50px 50px;}
+  }
+
+
+div.b {
+  text-align: center;
+  align-items: center;
+  font-weight: 400;
+  border-radius: 10px;
+  color : rgb(255, 250, 240);
+  border: 4px solid RebeccaPurple;
+}
+
+div.c {
+  height: 250px;
+  text-align: left;
+  align-items: left;
+  padding: 10px;
+  border-radius: 10px;
+  color : rgb(255, 250, 240);
+  border: 4px solid RebeccaPurple;
+}
+
+/* Animations */
+/* @keyframes mymove {
+  from {background-color: red;}
+  to {background-color: blue;}
+} */
