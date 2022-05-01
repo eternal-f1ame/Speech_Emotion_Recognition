@@ -1,5 +1,5 @@
 body {
-  background-image: url("../images/bg2.jpeg");
+  background-image: url("/static/images/bg2.jpeg");
   background-size: cover;
 }
 
@@ -116,7 +116,7 @@ div.a {
   height: 50px;
   padding: 0px 510px;
   border-radius: 10px;
-  background: purple url('smiley.gif') ;
+  background: purple;
   animation: mymove 5s infinite;
   }
 
