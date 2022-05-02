@@ -1,14 +1,19 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static', filename = 'style_main.css') }}" />
+  {% block head %}{% endblock %}
+
   <title> Speech Emotion Recognition </title>
+
 </head>
 
 <body>
-
+  {% block body %}{% endblock %}
 <div class="a">
 <h1> <b> Speech Emotion Recognition </b> </h1>
 </div>
@@ -19,31 +24,40 @@
 <h2> Input the audio file </h2>
 <p> The file should be in the format .mp3 or .wav </p>
 
-<label> Choose the File to upload: </label>
-<input type="file" id="f" accept="audio/*" /> <br><br>
+<!-- initialising form structure and inputs with method = POST -->
+<form action="/prediction" method="post" enctype="multipart/form-data">
+<p> <bold>Audio File:</bold> <input type="file" id="f" name="file" accept="audio/*" /> </p><br><br>
+  
 <div class="slide">
 <p> Select the preferred time limit: <p>
-<div class="tooltip"><input type="range" id="r" value="5" min="0" max="100" class="slider", step="5">
-  <span class="tooltiptext">Time(in sec)</span>
+<span id="slider_value2" style="color:blue;font-weight:500;"></span>
+<input type="range" id="r" value="5" min="0" max="100" class="slider", step="5" onchange="show_value2(this.value)" >
 </div>
-</div>
+
 <br><br>
-<div class="tooltip"><input size=45 class="i" type="submit" value="submit" />
+
+<div class="tooltip"><input size=45 class="i" type="submit" value="predict" />
   <span class="tooltiptext">Submit Audio File</span>
 </div>
 <!-- <input size=45 class="i" type="submit" value="submit" /> -->
+</form>
 </div>
+
+
+
 <br>
 <br>
 <br>
+
+{% if transcript!="" %}
 <div class="c">
 <h2> The predicted Emotions are : </h2>
-<output name="emotion" for="f"></output>
-<p> Textoutput </p>
-
+<p> {{ transcript }} </p>
 </div>
+{% endif %}
 
-<script>
+
+<!-- <script>
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value;
@@ -51,7 +65,7 @@ output.innerHTML = slider.value;
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
-</script>
+</script> -->
 
 </body>
 </html>

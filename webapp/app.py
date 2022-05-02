@@ -1,16 +1,46 @@
+from fileinput import filename
 import numpy as np
-from flask import Flask, render_template,request, url_for
-import pickle
+from flask import Flask, render_template,request, url_for, jsonify, redirect
+import pickle, os
+import speech_recognition as sr
+# from keyword_spotting_service import Keyword_Spotting_Service
 
 
 app = Flask(__name__)
 model = pickle.load(open('../model_mb.pkl', 'rb'))
 
-@app.route('/')
+# Landing Page
+@app.route("/")
 def home():
-    return render_template('base.html')
+    return render_template('base.html', transcript="")
 
-# @app.route('/',methods=['POST'])
+# Prediction Page
+@app.route('/prediction',methods=["GET", "POST"])
+def predict():
+
+    transcript=""
+
+    if request.method == "POST":
+        print("FORM DATA RECEIVED")
+        
+        if "file" not in request.files:
+            return redirect(request.url)
+        
+        file = request.files["file"]
+        
+        if file.filename == "":
+            return redirect(request.url)
+        
+        if file:
+            recognizer = sr.Recognizer()
+            audiofile = sr.AudioFile(file)
+            with audiofile as source:
+                data = recognizer.record(source)
+            transcript = recognizer.recognize_google(data, key=None)
+            print(transcript)
+
+    return render_template('base.html', transcript = transcript)
+
 
 # def predict():
 #     #For rendering results on HTML GUI
@@ -21,5 +51,5 @@ def home():
 #     return render_template('index.html', prediction_text='CO2    Emission of the vehicle is :{}'.format(output))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)
 
