@@ -13,7 +13,7 @@ emotions_decoder = ['Neutral', 'Calm', 'Happy', 'Sad', 'Angry', 'Fearful', 'Disg
 
 
 app = Flask(__name__)
-model = pickle.load(open('../model_mb.pkl', 'rb'))
+model = pickle.load(open('./model_mb.pkl', 'rb'))
 mean = None
 std = None
 
