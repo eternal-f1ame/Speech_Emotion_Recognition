@@ -1,6 +1,6 @@
-Flask==2.1.2
+flask==2.1.2
 librosa==0.9.1
 numpy==1.21.6
-SoundFile==0.10.3.post1
-SpeechRecognition==3.8.1
+soundfile==0.10.3.post1
+speechrecognition==3.8.1
 gunicorn
