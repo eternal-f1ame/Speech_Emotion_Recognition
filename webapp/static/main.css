@@ -1,0 +1,214 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Quicksand;
+}
+
+body {
+    background: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100vw;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    background: #eee;
+    font-family: Helvetica, sans-serif;
+}
+
+.box {
+    width: 60%;
+    height: 80%;
+    border-radius: 5px;
+    opacity: 0.9;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+    background: #a5bbdd;
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    min-width: 200px;
+    min-height: 350px;
+}
+
+.wave {
+    opacity: 0.3;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    background: white;
+    width: 900px;
+    height: 900px;
+    margin-left: -450px;
+    margin-top: -210px;
+    transform-origin: 50% 48%;
+    border-radius: 42%;
+    animation: drift 3000ms infinite linear;
+    z-index: 1;
+}
+
+.wave.-three {
+    animation: drift 5000ms infinite linear;
+    z-index: 2 !important;
+    opacity: 0.2;
+}
+
+.wave.-two {
+    animation: drift 7000ms infinite linear;
+    opacity: 0.1;
+    z-index: 3 !important;
+}
+
+.box:after {
+    content: "";
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    transform: translate3d(0, 0, 0);
+}
+
+@keyframes drift {
+    from {
+        transform: rotate(0deg);
+    }
+
+    from {
+        transform: rotate(360deg);
+    }
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45%;
+    z-index: 4;
+}
+
+.location {
+    text-align: center;
+    font-weight: 800;
+}
+
+.date {
+    text-align: center;
+    margin-top: 5%;
+    color: #9a9a9a;
+    font-size: 70%;
+}
+
+.temp {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.weathercon {
+    position: relative;
+    top: -5%;
+    height: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+}
+
+@media (max-width: 600px) {
+    .box {
+        width: 90vw;
+        height: 80vh;
+    }
+
+    .wave {
+        top: 85%;
+    }
+
+    .weathercon {
+        font-size: 5em;
+    }
+
+    .info {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-height: 500px) {
+    .box {
+        height: 80vh;
+    }
+
+    .wave {
+        top: 115%;
+    }
+}
+
+body>span {
+    width: 100vw;
+    text-align: center;
+    color: grey;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    border: 1px solid gray;
+    background-color: whitesmoke;
+    padding: 5px 5px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+::selection {
+    background: rgb(31, 31, 241);
+    color: whitesmoke; 
+}
+
+h3 {
+    font-size: 30px;
+}
+
+h5 {
+    font-size:24px;
+}
+.pred {
+    font-size:28px;
+}
+
+.i {
+    height: 40px;
+    width: 80px;
+    background-color: rgb(82, 124, 251);    
+}
+.i:hover {
+    transform: scale(1.1,1.1);
+}
+.tit {
+    height: 30%;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(108, 144, 254);
+    border-radius: 15px;
+}

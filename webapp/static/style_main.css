@@ -1,13 +1,18 @@
 body {
-  background-image: url("/static/images/bg2.jpeg");
+  background-image: url("/static/images/bg6.jpg");
   background-size: cover;
+  background-position: inherit;
 }
 
 h1 {
   text-align: center;
-  color : rgb(255, 250, 240);
+  color : rgb(232, 233, 198);
 }
 
+h2 {
+  text-align: center;
+  color : rgb(40, 40, 41);
+}
 
 output {
   display: inline-block;
@@ -18,13 +23,17 @@ output {
 .i {
   width: 100px;
   height: 40px;
-  background-color: RebeccaPurple;
+  background-color: rgb(46, 166, 199);
   border-radius: 10px;
-  color : rgb(255,250,240);
+  color : rgb(232, 233, 198);
 }
 
 .i:hover {
-  transform: scale(1,1);
+  transform: scale(1.2,1.2);
+}
+
+.para {
+  text-align: center;
 }
 
 /* Divisons Start */
@@ -56,7 +65,7 @@ output {
   appearance: none;
   width: 25px;
   height: 25px;
-  background: #8A2BE2;
+  background: rgb(46, 166, 199);
   cursor: pointer;
   border-radius: 50%;
   /* padding: 0px 50px; */
@@ -65,7 +74,7 @@ output {
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #8A2BE2;
+  background: rgb(46, 166, 199);
   cursor: pointer;
 
   /* padding: 0px 50px; */
@@ -124,13 +133,13 @@ div.a {
   height: 50px;
   padding: 0px 510px;
   border-radius: 10px;
-  background: purple;
-  animation: mymove 5s infinite;
+  background: rgb(19, 76, 175);
+  /* animation: mymove 5s infinite; */
   }
 
-  @keyframes mymove {
+  /* @keyframes mymove {
   50% {background: MidnightBlue center center/50px 50px;}
-  }
+  } */
 
 
 div.b {
@@ -139,18 +148,17 @@ div.b {
   font-weight: 400;
   border-radius: 10px;
   color : rgb(255, 250, 240);
-  border: 4px solid RebeccaPurple;
+  border: 4px solid rgb(19, 76, 175);
   justify-content: space-around;
 }
 
 div.c {
-  height: 250px;
   text-align: left;
   align-items: left;
   padding: 10px;
   border-radius: 10px;
   color : rgb(255, 250, 240);
-  border: 4px solid RebeccaPurple;
+  border: 4px solid rgb(19, 76, 175);
 }
 
 /* Animations */
