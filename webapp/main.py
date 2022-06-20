@@ -13,11 +13,12 @@ emotions_decoder = ['Neutral', 'Calm', 'Happy', 'Sad', 'Angry', 'Fearful', 'Disg
 
 
 app = Flask(__name__)
-model = pickle.load(open('./model_mb.pkl', 'rb'))
+model = pickle.load(open('../model_mb.pkl', 'rb'))
+sc = pickle.load(open('../scaler.pkl', 'rb'))
 mean = None
 std = None
 
-def proc_aud(aud, sr, mfcc=False, chroma=True, mel=False):
+def proc_aud(aud, sr, mfcc=True, chroma=True, mel=True):
     X = aud
     sample_rate = sr
     if chroma:
@@ -30,11 +31,11 @@ def proc_aud(aud, sr, mfcc=False, chroma=True, mel=False):
         result=np.hstack((result, mfccs))
 
     if chroma:
-        chroma=np.mean(librosa.feature.chroma_stft(S=stft, sr=sample_rate).T,axis=0)
+        chroma=np.mean(librosa.feature.chroma_stft(S=stft, sr=sample_rate,n_chroma=32).T,axis=0)
         result=np.hstack((result, chroma))
 
     if mel:
-        mel=np.mean(librosa.feature.melspectrogram(X, sr=sample_rate).T,axis=0)
+        mel=np.mean(librosa.feature.melspectrogram(X, sr=sample_rate,n_fft=2048).T,axis=0)
         result=np.hstack((result, mel))
     
     if mean is not None and std is not None:
@@ -76,10 +77,11 @@ def predict():
             audio, samplerate = librosa.load(audio, duration=2.5, offset=0.5)
             audio = proc_aud(audio, samplerate).reshape(1, -1)
 
-            pred = model.predict(audio)
+            
+            pred = model.predict(sc.transform(audio))
 
             emotion = emotions_decoder[pred.squeeze()]
-            transcript = "sex suxxxx"
+            transcript = ""
 
             
             '''recognizer = sr.Recognizer()
