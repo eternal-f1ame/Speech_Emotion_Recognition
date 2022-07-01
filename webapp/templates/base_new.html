@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'main.css') }}" />
+  {% block head %}{% endblock %}
+
+  <title> Speech Emotion Recognition </title>
+
+  <script src="{{ url_for('static', filename = 'main.js') }}"></script>
+
+</head>
+
+<body>
+  {% block body %}{% endblock %}
+
+<div class='box'>
+<div class='wave -one'></div>
+<div class='wave -two'></div>
+<div class='wave -three'></div>
+<div class="weathercon"><div class = "tit">Speech Emotion Recognition</div></div>
+<div class="info" style="position:relative; top:-12%; text-align:center">        
+        <!-- initialising form structure and inputs with method = POST -->
+        <form action="/prediction" method="post" enctype="multipart/form-data">
+        <input type="file" id="f" name="file" accept="audio/*" class="btn"/>
+
+        <br><br>
+
+
+        <!--<div class="slide">
+        <p> Select the preferred time limit: <p>
+        <span id="slider_value2" style="color:blue;font-weight:500;"></span>
+        <input type="range" id="r" value="5" min="0" max="100" class="slider", step="5" onchange="show_value2(this.value)" >
+        </div> -->
+        
+        <br><br>
+        
+        <div class="tooltip"><input size=4 class="i btn" type="submit" value="Predict" />
+        </div>
+        <!-- <input size=45 class="i" type="submit" value="submit" /> -->
+        </form>
+        <br><br>
+        {% if transcript!="" %}
+        <div class="c">
+        <p class = "pred"> The predicted emotion is : </p>
+        <h5> {{ emotion }} </h5><br>
+        {% endif %}
+
+</div>
+</div>
+</div>
+<span></span>
+
+
+
+</body>
+</html>
